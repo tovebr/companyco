@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+/* Color variables */
+/* Overall Styling */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: #dedede;
+}
+
+button {
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px;
+  background-color: white;
+  -webkit-box-shadow: #333 3px 3px 4px;
+          box-shadow: #333 3px 3px 4px;
+}
+
+.main-page {
+  min-height: 50vh;
+}
+
+.main-page h1 {
+  padding-top: 5rem;
+  text-transform: uppercase;
+}
+
+.main-page h3 {
+  text-transform: uppercase;
+}
+
+.main-page .log-in {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 20rem;
+  margin: 7rem auto;
+  padding: 2rem;
+  background-color: #c8c8c8;
+  border-radius: 7px;
+}
+
+.main-page .log-in .username-group,
+.main-page .log-in .password-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.main-page .log-in .username-group input,
+.main-page .log-in .password-group input {
+  width: 10rem;
+}
+
+.main-page .log-in button {
+  display: block;
+  margin: 1rem 0 0.5rem auto;
+  /* margin-left: auto;
+      margin-right: 0; */
+  width: 8rem;
+}
+/*# sourceMappingURL=main.css.map */

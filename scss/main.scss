@@ -1,0 +1,66 @@
+// Import Google Font
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+/* Color variables */
+
+$bg-color: rgb(222, 222, 222);
+$bg-color-dark: rgb(200, 200, 200);
+$bg-color-darker: rgb(100, 88, 88);
+$bg-color-light: rgb(255, 255, 255);
+$bg-color-button: rgb(232, 188, 161);
+
+/* Overall Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: $bg-color;
+}
+
+button {
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px;
+  background-color: $bg-color-light;
+  box-shadow: #333 3px 3px 4px;
+}
+
+.main-page {
+  min-height: 50vh;
+  h1 {
+    padding-top: 5rem;
+    text-transform: uppercase;
+  }
+  h3 {
+    text-transform: uppercase;
+  }
+  .log-in {
+    display: flex;
+    flex-direction: column;
+    max-width: 20rem;
+    margin: 7rem auto;
+    padding: 2rem;
+    background-color: $bg-color-dark;
+    border-radius: 7px;
+    .username-group,
+    .password-group {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      input {
+        width: 10rem;
+      }
+    }
+    button {
+      display: block;
+      margin: 1rem 0 0.5rem auto;
+      /* margin-left: auto;
+      margin-right: 0; */
+      width: 8rem;
+    }
+  }
+}
