@@ -13,8 +13,13 @@ body {
   background-color: #dedede;
 }
 
+.hide {
+  display: none;
+}
+
 button {
   border: none;
+  outline: 0 !important;
   padding: 0.7rem 1.5rem;
   border-radius: 5px;
   background-color: white;
@@ -23,11 +28,11 @@ button {
 }
 
 .main-page {
-  min-height: 50vh;
+  min-height: 70vh;
 }
 
 .main-page h1 {
-  padding-top: 5rem;
+  /* padding-top: 5rem; */
   text-transform: uppercase;
 }
 
@@ -35,7 +40,39 @@ button {
   text-transform: uppercase;
 }
 
-.main-page .log-in {
+.main-page .log-in-header {
+  padding-top: 5rem;
+}
+
+.main-page .log-in-header .log-in-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  max-width: 20rem;
+  margin: auto;
+  /* overflow: hidden; */
+}
+
+.main-page .log-in-header .log-in-options .btn {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  margin: auto;
+  border-radius: 5px 5px 0 0;
+  width: 50%;
+  background-color: #c8c8c8;
+  font-weight: bolder;
+}
+
+.main-page .log-in-header .log-in-options .inactive {
+  background-color: #796b6b;
+}
+
+.main-page .log-in,
+.main-page .new-user {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,14 +81,16 @@ button {
       -ms-flex-direction: column;
           flex-direction: column;
   max-width: 20rem;
-  margin: 7rem auto;
+  margin: 0 auto 7rem auto;
   padding: 2rem;
   background-color: #c8c8c8;
-  border-radius: 7px;
+  border-radius: 0 0 5px 5px;
 }
 
-.main-page .log-in .username-group,
-.main-page .log-in .password-group {
+.main-page .username-group,
+.main-page .password-group,
+.main-page .name-group,
+.main-page .email-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -61,16 +100,21 @@ button {
   margin-bottom: 2rem;
 }
 
-.main-page .log-in .username-group input,
-.main-page .log-in .password-group input {
+.main-page .username-group input,
+.main-page .password-group input,
+.main-page .name-group input,
+.main-page .email-group input {
   width: 10rem;
 }
 
-.main-page .log-in button {
+.main-page .btn {
+  background-color: white;
   display: block;
   margin: 1rem 0 0.5rem auto;
-  /* margin-left: auto;
-      margin-right: 0; */
   width: 8rem;
+}
+
+.main-page .btn-new-user {
+  width: 10rem;
 }
 /*# sourceMappingURL=main.css.map */

@@ -6,6 +6,7 @@
 $bg-color: rgb(222, 222, 222);
 $bg-color-dark: rgb(200, 200, 200);
 $bg-color-darker: rgb(100, 88, 88);
+$bg-color-mediumdark: rgb(121, 107, 107);
 $bg-color-light: rgb(255, 255, 255);
 $bg-color-button: rgb(232, 188, 161);
 
@@ -21,8 +22,13 @@ body {
   background-color: $bg-color;
 }
 
+.hide {
+  display: none;
+}
+
 button {
   border: none;
+  outline: 0 !important;
   padding: 0.7rem 1.5rem;
   border-radius: 5px;
   background-color: $bg-color-light;
@@ -30,37 +36,65 @@ button {
 }
 
 .main-page {
-  min-height: 50vh;
+  min-height: 70vh;
   h1 {
-    padding-top: 5rem;
+    /* padding-top: 5rem; */
     text-transform: uppercase;
   }
   h3 {
     text-transform: uppercase;
   }
-  .log-in {
+
+  .log-in-header {
+    padding-top: 5rem;
+    .log-in-options {
+      display: flex;
+      flex-direction: row;
+      max-width: 20rem;
+      margin: auto;
+      /* overflow: hidden; */
+      .btn {
+        box-shadow: none;
+        margin: auto;
+        border-radius: 5px 5px 0 0;
+        width: 50%;
+        background-color: $bg-color-dark;
+        font-weight: bolder;
+      }
+      .inactive {
+        background-color: $bg-color-mediumdark;
+      }
+    }
+  }
+  .log-in,
+  .new-user {
     display: flex;
     flex-direction: column;
     max-width: 20rem;
-    margin: 7rem auto;
+    margin: 0 auto 7rem auto;
     padding: 2rem;
     background-color: $bg-color-dark;
-    border-radius: 7px;
-    .username-group,
-    .password-group {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-      input {
-        width: 10rem;
-      }
+    border-radius: 0 0 5px 5px;
+  }
+
+  .username-group,
+  .password-group,
+  .name-group,
+  .email-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    input {
+      width: 10rem;
     }
-    button {
-      display: block;
-      margin: 1rem 0 0.5rem auto;
-      /* margin-left: auto;
-      margin-right: 0; */
-      width: 8rem;
+  }
+  .btn {
+    background-color: $bg-color-light;
+    display: block;
+    margin: 1rem 0 0.5rem auto;
+    width: 8rem;
+    &-new-user {
+      width: 10rem;
     }
   }
 }

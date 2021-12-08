@@ -57,3 +57,32 @@ window.onload = function () {
     }
   });
 };
+
+document.querySelector(".log-in-options").addEventListener("click", (e) => {
+  const logIn = document.querySelector(".show-log-in");
+  const newUser = document.querySelector(".show-new-user");
+  const logInDiv = document.getElementById("log-in");
+  const newUserDiv = document.getElementById("new-user");
+
+  let active, inactive;
+  if (e.target.classList.contains("show-log-in")) {
+    active = "log-in";
+    inactive = "new-user";
+  }
+
+  if (e.target.classList.contains("inactive") && active === "log-in") {
+    newUser.classList.add("inactive");
+    logIn.classList.remove("inactive");
+    logInDiv.classList.add("log-in");
+    logInDiv.classList.remove("hide");
+    newUserDiv.classList.remove("new-user");
+    newUserDiv.classList.add("hide");
+  } else if (e.target.classList.contains("inactive") && active !== "log-in") {
+    logIn.classList.add("inactive");
+    newUser.classList.remove("inactive");
+    newUserDiv.classList.add("new-user");
+    newUserDiv.classList.remove("hide");
+    logInDiv.classList.remove("log-in");
+    logInDiv.classList.add("hide");
+  }
+});

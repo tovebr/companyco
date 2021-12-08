@@ -33,7 +33,6 @@
     />
     <!-- CSS -->
     <link rel="stylesheet" href="css/main.css" />
-    <script src="main.js"></script>
 
     <title>Homepage - Company & CO</title>
   </head>
@@ -104,17 +103,49 @@
       <!-- Company Name -->
       <h1 class="text-center">Company & Co</h1>
       <h3 class="text-center">Jackets for Men and Women</h3>
-      <div class="log-in">
-        <div class="username-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" />
+      <section class="user-start">
+        <div class="log-in-header">
+          <div class="log-in-options">
+            <button class="show-log-in btn">Log In</button>
+            <button class="show-new-user btn inactive">New User</button>
+          </div>
         </div>
-        <div class="password-group">
-          <label for="password">Password</label>
-          <input type="text" id="password" />
+        <div id="log-in" class="log-in">
+          <div class="username-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" />
+          </div>
+          <div class="password-group">
+            <label for="password">Password</label>
+            <input type="text" id="password" />
+          </div>
+          <button id="login" type="submit" class="btn btn-log-in">
+            Log In
+          </button>
         </div>
-        <button id="login" type="submit">Log In</button>
-      </div>
+        <div id="new-user" class="hide">
+          <div class="name-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" />
+          </div>
+          <div class="email-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" />
+          </div>
+
+          <div class="username-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" />
+          </div>
+          <div class="password-group">
+            <label for="password">Password</label>
+            <input type="text" id="password" />
+          </div>
+          <button id="login" type="submit" class="btn btn-new-user">
+            Create new user
+          </button>
+        </div>
+      </section>
     </div>
     <div id="root"></div>
     <!-- Footer -->
@@ -271,4 +302,5 @@
     </footer>
     <!-- Footer -->
   </body>
+  <script src="main.js"></script>
 </html>
