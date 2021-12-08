@@ -33,27 +33,34 @@ users.push(
 );
 
 window.onload = function () {
-  let username = document.getElementById("username");
-  let password = document.getElementById("password");
   let logInBtn = document.getElementById("login");
-  let root = document.getElementById("root");
+  logInBtn.addEventListener("click", logIn);
 
-  logInBtn.addEventListener("click", function () {
-    root.innerHTML = "";
-    for (let i = 0; i < users.length; i++) {
-      if (
-        users[i].userName == username.value &&
-        users[i].password == password.value
-      ) {
-        root.innerHTML = `
-        <div>
-        <p><h3>Välkommen ${users[i].firstName} ${users[i].lastName}!</h3></p>
-        <div>Du har följande jackor</div>`;
-        for (let x = 0; x < users[i].jackets.length; x++) {
-          root.innerHTML += `<img src="${users[i].jackets[x]}" alt="" />`;
-        }
-        root.innerHTML += `</div>`;
+  function logIn() {
+    let username = document.getElementById("username");
+    let password = document.getElementById("password");
+    let root = document.getElementById("root");
+    let logInForm = document.getElementsByClassName("log-in")[0];
+    const user = users.find(({ userName }) => userName === username.value);
+    if (user == undefined) {
+      root.innerHTML = "Fel användarnamn eller lösenord";
+    } else if (password.value == user.password) {
+      root.innerHTML = "";
+      root.innerHTML = `<div>
+      Du har följande jackor`;
+      for (let i = 0; i < user.jackets.length; i++) {
+        root.innerHTML += `<img src ="${user.jackets[i]}"/>`;
       }
+      root.innerHTML += `</div>`;
+      logInForm.style.display = "none";
+      let logOut = document.getElementById("log-out");
+      logOut.style.display = "block";
+      logOut.innerHTML = `Välkommen ${user.firstName} ${user.lastName}!<br> <button>Logga ut?</button>`;
+      logOut.querySelector("button").addEventListener("click", function () {
+        logInForm.style.display = "block";
+        logOut.style.display = "none";
+        root.innerHTML = "";
+      });
     }
-  });
+  }
 };
