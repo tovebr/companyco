@@ -40,7 +40,8 @@ window.onload = function () {
     let username = document.getElementById("username");
     let password = document.getElementById("password");
     let root = document.getElementById("root");
-    let logInForm = document.getElementsByClassName("log-in")[0];
+    /* let logInForm = document.getElementsByClassName("log-in")[0]; */
+    const startForm = document.querySelector(".user-start");
     const user = users.find(({ userName }) => userName === username.value);
     if (user == undefined) {
       root.innerHTML = "Fel användarnamn eller lösenord";
@@ -52,13 +53,16 @@ window.onload = function () {
         root.innerHTML += `<img src ="${user.jackets[i]}"/>`;
       }
       root.innerHTML += `</div>`;
-      logInForm.style.display = "none";
+      /* logInForm.style.display = "none"; */
+      startForm.style.display = "none";
       let logOut = document.getElementById("log-out");
       logOut.style.display = "block";
+
       logOut.innerHTML = `Välkommen ${user.firstName} ${user.lastName}!<br> <button>Logga ut?</button>`;
       logOut.querySelector("button").addEventListener("click", function () {
-        logInForm.style.display = "block";
+        /* logInForm.style.display = "block"; */
         logOut.style.display = "none";
+        startForm.style.display = "block";
         root.innerHTML = "";
       });
     }
@@ -68,8 +72,8 @@ window.onload = function () {
 document.querySelector(".log-in-options").addEventListener("click", (e) => {
   const logIn = document.querySelector(".show-log-in");
   const newUser = document.querySelector(".show-new-user");
-  const logInDiv = document.getElementById("log-in");
-  const newUserDiv = document.getElementById("new-user");
+  const logInDiv = document.getElementById("log-in-div");
+  const newUserDiv = document.getElementById("new-user-div");
 
   let active, inactive;
   if (e.target.classList.contains("show-log-in")) {

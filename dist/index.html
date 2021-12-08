@@ -110,7 +110,7 @@
             <button class="show-new-user btn inactive">New User</button>
           </div>
         </div>
-        <div id="log-in" class="log-in">
+        <div id="log-in-div" class="log-in">
           <div class="username-group">
             <label for="username">Username</label>
             <input type="text" id="username" />
@@ -122,8 +122,8 @@
           <button id="login" type="submit" class="btn btn-log-in">
             Log In
           </button>
-        
-        <div id="new-user" class="hide">
+        </div>
+        <div id="new-user-div" class="hide">
           <div class="name-group">
             <label for="name">Name</label>
             <input type="text" id="name" />
@@ -141,14 +141,15 @@
             <label for="password">Password</label>
             <input type="text" id="password" />
           </div>
-          <button id="login" type="submit" class="btn btn-new-user">
+          <button id="new-user" type="submit" class="btn btn-new-user">
             Create new user
           </button>
         </div>
       </section>
+
+      <div id="log-out" style="display: none"></div>
+      <div id="root"></div>
     </div>
-    <div id="log-out" style="display: none"></div>
-    <div id="root"></div>
     <!-- Footer -->
     <footer class="bg-dark text-center text-white mt-5">
       <!-- Footer container - Grid -->
