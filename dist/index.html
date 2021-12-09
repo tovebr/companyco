@@ -39,10 +39,7 @@
 
   <body class="pt-5">
     <!-- Navbar -->
-    <nav
-      class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
-      style="display: none"
-    >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container-fluid">
         <!-- Logo Brand - Navbar -->
         <a class="navbar-brand" href="index.html">Company & CO</a>
@@ -82,6 +79,12 @@
             </li>
             <li class="nav-item">
               <a class="nav-link bi bi-heart"></a>
+            </li>
+            <li class="nav-item">
+              <div id="logInStatus">
+                <a class="nav-link bi bi-person-circle"></a>
+                <div id="log-out" style="display: none">Inte inloggad</div>
+              </div>
             </li>
           </ul>
           <form class="d-flex input-group w-auto">
@@ -147,7 +150,7 @@
         </div>
       </section>
 
-      <div id="log-out" style="display: none"></div>
+      <!--<div id="log-out" style="display: none"></div>-->
       <div id="root"></div>
     </div>
     <!-- Footer -->
