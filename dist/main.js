@@ -13,17 +13,22 @@ window.onload = function () {
       root.getElementById("mainHeader").innerHTML =
         "Fel användarnamn eller lösenord";
     } else if (password.value == user.password) {
-      root.querySelector("main").innerHTML = `<div>
-      Hej ${user.firstName} ${user.lastName}! <br>Du har ${user.jackets.length} jackor till salu. Klicka <a>här</a> för att se dina jackor
-      <br>Klicka <a>här</a> för att lägga till fler jackor`;
+      document.getElementById("mainHeader").innerHTML = `<div class="card">
+      <div class="card-body">
+      <h5 class="cart-tile">Hej ${user.firstName} ${user.lastName}!</h5> 
+      <p class="card-text">Du har ${user.jackets.length} jackor till salu.</p>
+      <a href="#" class="card-link">Lägg till ny jacka</a>`;
       for (let i = 0; i < user.jackets.length; i++) {
-        root.innerHTML += `<div class="product">
-        <img alt="${user.jackets[i].img_alt}" src="${user.jackets[i].image}"/>
-        <div class="jacketInfo">
-        <div class="jacketName">Jacket name: ${user.jackets[i].jacketName}</div>
-        <div class="price">Price: ${user.jackets[i].price}</div>
-        <div class="fabric">Fabric: ${user.jackets[i].fabric}</div>
-        <div class="gender">Gender: ${user.jackets[i].gender}</div>
+        root.querySelector(
+          "main"
+        ).innerHTML += `<div class="product card lg-3 my-3 mx-3" style="width: 18rem">
+        <img class="card-img-top" alt="${user.jackets[i].img_alt}" src="${user.jackets[i].image}"/>
+        <div class="card-body">
+          <h5 class="mt-2"> ${user.jackets[i].name}</h5>
+          <h3 class="mt-2">${user.jackets[i].jacketName}</h3>
+          <h3 class="mt-1">${user.jackets[i].price}</h3>
+          <p class="card-text">${user.jackets[i].fabric}</p>
+          <a class="btn bi bi-heart"> ${user.jackets[i].gender}</a>
         </div>
         </div>`;
       }
@@ -39,7 +44,8 @@ window.onload = function () {
         logOut.innerHTML = "Inte inloggad";
         logOut.style.display = "none";
         startForm.style.display = "block";
-        root.innerHTML = "";
+        document.getElementById("mainHeader").innerHTML = "";
+        root.querySelector("main").innerHTML = "";
       });
     }
   }

@@ -60,10 +60,19 @@ body {
   -webkit-box-align: left;
       -ms-flex-align: left;
           align-items: left;
-  gap: 15px;
 }
 
-#root .product {
+#root #mainHeader {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+#root main {
+  background: #fff;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -71,23 +80,11 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  gap: 15px;
 }
 
-#root .product img {
+#root main .product img {
   background-size: cover;
   height: 400px;
-  max-width: 250px;
-}
-
-#root .product .jacketInfo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 
 .hide {
