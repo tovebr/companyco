@@ -58,7 +58,7 @@ window.onload = function () {
       let logOut = document.getElementById("log-out");
       logOut.style.display = "block";
 
-      logOut.innerHTML = `Välkommen ${user.firstName} ${user.lastName}!<br> <button>Logga ut?</button>`;
+      logOut.innerHTML = `${user.userName} <a>Logga ut?</a>`;
       logOut.querySelector("button").addEventListener("click", function () {
         /* logInForm.style.display = "block"; */
         logOut.style.display = "none";

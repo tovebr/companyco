@@ -22,6 +22,21 @@ body {
   background-color: $bg-color;
 }
 
+#logInStatus {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#log-out {
+  display: flex !important;
+  flex-direction: row;
+  gap: 5px;
+  font-size: 15px;
+  a {
+    text-decoration: underline;
+  }
+}
+
 .hide {
   display: none;
 }
