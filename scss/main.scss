@@ -35,6 +35,33 @@ body {
   a {
     text-decoration: underline;
   }
+  a:hover {
+    color: grey;
+    cursor: pointer;
+  }
+}
+
+#root {
+  width: 1024px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 15px;
+  .product {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    img {
+      background-size: cover;
+      height: 400px;
+      max-width: 250px;
+    }
+    .jacketInfo {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
 
 .hide {

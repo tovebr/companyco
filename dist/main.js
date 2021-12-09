@@ -1,5 +1,3 @@
-
-
 window.onload = function () {
   let logInBtn = document.getElementById("login");
   logInBtn.addEventListener("click", logIn);
@@ -12,13 +10,22 @@ window.onload = function () {
     const startForm = document.querySelector(".user-start");
     const user = users.find(({ userName }) => userName === username.value);
     if (user == undefined) {
-      root.innerHTML = "Fel användarnamn eller lösenord";
+      root.getElementById("mainHeader").innerHTML =
+        "Fel användarnamn eller lösenord";
     } else if (password.value == user.password) {
-      root.innerHTML = "";
-      root.innerHTML = `<div>
-      Du har följande jackor`;
+      root.querySelector("main").innerHTML = `<div>
+      Hej ${user.firstName} ${user.lastName}! <br>Du har ${user.jackets.length} jackor till salu. Klicka <a>här</a> för att se dina jackor
+      <br>Klicka <a>här</a> för att lägga till fler jackor`;
       for (let i = 0; i < user.jackets.length; i++) {
-        root.innerHTML += `<img src ="${user.jackets[i]}"/>`;
+        root.innerHTML += `<div class="product">
+        <img alt="${user.jackets[i].img_alt}" src="${user.jackets[i].image}"/>
+        <div class="jacketInfo">
+        <div class="jacketName">Jacket name: ${user.jackets[i].jacketName}</div>
+        <div class="price">Price: ${user.jackets[i].price}</div>
+        <div class="fabric">Fabric: ${user.jackets[i].fabric}</div>
+        <div class="gender">Gender: ${user.jackets[i].gender}</div>
+        </div>
+        </div>`;
       }
       root.innerHTML += `</div>`;
       /* logInForm.style.display = "none"; */
@@ -27,8 +34,9 @@ window.onload = function () {
       logOut.style.display = "block";
 
       logOut.innerHTML = `${user.userName} <a>Logga ut?</a>`;
-      logOut.querySelector("button").addEventListener("click", function () {
+      logOut.querySelector("a").addEventListener("click", function () {
         /* logInForm.style.display = "block"; */
+        logOut.innerHTML = "Inte inloggad";
         logOut.style.display = "none";
         startForm.style.display = "block";
         root.innerHTML = "";
