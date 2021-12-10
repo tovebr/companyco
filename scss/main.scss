@@ -80,7 +80,7 @@ button {
 .main-page {
   min-height: 70vh;
   h1 {
-    /* padding-top: 5rem; */
+    padding-top: 5rem;
     text-transform: uppercase;
   }
   h3 {
@@ -94,7 +94,7 @@ button {
       flex-direction: row;
       max-width: 20rem;
       margin: auto;
-      /* overflow: hidden; */
+      overflow: hidden;
       .btn {
         box-shadow: none;
         margin: auto;
