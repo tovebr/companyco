@@ -1,9 +1,20 @@
+window.onload = function () {
+  let logOut = document.getElementById("log-out");
+  logOut.style.display = "block";
 
-   users.forEach(user => {
-       user.jackets.forEach(element =>{
-        console.log(element)
-        const html=
-        `
+  logOut.innerHTML = `${user.userName} <a>Logga ut?</a>`;
+  logOut.querySelector("a").addEventListener("click", function () {
+    logOut.innerHTML = "Inte inloggad";
+    logOut.style.display = "none";
+
+    localStorage.clear();
+  });
+};
+
+users.forEach((user) => {
+  user.jackets.forEach((element) => {
+    console.log(element);
+    const html = `
          <div class="card lg-3 my-3 mx-3" style="width: 18rem">
              <img
                class="card-img-top"
@@ -18,10 +29,11 @@
                <a class="btn bi bi-heart">${element.gender}</a>
                <a href="#" class="btn btn-primary">Buy</a>
              </div>
-           </div>
-     `
-     
-       });
-       
-    });
-    
+           </div>`;
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const ref = localStorage.getItem("user");
+  if (ref) user = JSON.parse(ref);
+});

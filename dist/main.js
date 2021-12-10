@@ -107,55 +107,63 @@ users.push(
   ])
 );
 
+let user;
+
 window.onload = function () {
   let logInBtn = document.getElementById("login");
-  logInBtn.addEventListener("click", logIn);
+  const startForm = document.querySelector(".user-start");
 
+  function displayLoggedIn() {
+    document.getElementById("mainHeader").innerHTML = `<div class="card">
+    <div class="card-body">
+    <h5 class="cart-tile">Hej ${user.firstName} ${user.lastName}!</h5> 
+    <p class="card-text">Du har ${user.jackets.length} jackor till salu.</p>
+    <a href="#" class="card-link">Lägg till ny jacka</a>`;
+    for (let i = 0; i < user.jackets.length; i++) {
+      root.querySelector(
+        "main"
+      ).innerHTML += `<div class="product card lg-3 my-3 mx-3" style="width: 18rem">
+      <img class="card-img-top" alt="${user.jackets[i].img_alt}" src="${user.jackets[i].image}"/>
+      <div class="card-body">
+        <h5 class="mt-2"> ${user.jackets[i].name}</h5>
+        <h3 class="mt-2">${user.jackets[i].jacketName}</h3>
+        <h3 class="mt-1">${user.jackets[i].price}</h3>
+        <p class="card-text">${user.jackets[i].fabric}</p>
+        <a class="btn bi bi-heart"> ${user.jackets[i].gender}</a>
+      </div>
+      </div>`;
+    }
+    root.innerHTML += `</div>`;
+    startForm.style.display = "none";
+    let logOut = document.getElementById("log-out");
+    logOut.style.display = "block";
+
+    logOut.innerHTML = `${user.userName} <a>Logga ut?</a>`;
+    logOut.querySelector("a").addEventListener("click", function () {
+      logOut.innerHTML = "Inte inloggad";
+      logOut.style.display = "none";
+      startForm.style.display = "block";
+      document.getElementById("mainHeader").innerHTML = "";
+      root.querySelector("main").innerHTML = "";
+      localStorage.clear();
+    });
+  }
+
+  user && displayLoggedIn();
+
+  logInBtn.addEventListener("click", logIn);
   function logIn() {
     let username = document.getElementById("username");
     let password = document.getElementById("password");
     let root = document.getElementById("root");
-    /* let logInForm = document.getElementsByClassName("log-in")[0]; */
-    const startForm = document.querySelector(".user-start");
-    const user = users.find(({ userName }) => userName === username.value);
+
+    user = users.find(({ userName }) => userName === username.value);
     if (user == undefined) {
       root.getElementById("mainHeader").innerHTML =
         "Fel användarnamn eller lösenord";
     } else if (password.value == user.password) {
-      document.getElementById("mainHeader").innerHTML = `<div class="card">
-      <div class="card-body">
-      <h5 class="cart-tile">Hej ${user.firstName} ${user.lastName}!</h5> 
-      <p class="card-text">Du har ${user.jackets.length} jackor till salu.</p>
-      <a href="#" class="card-link">Lägg till ny jacka</a>`;
-      for (let i = 0; i < user.jackets.length; i++) {
-        root.querySelector(
-          "main"
-        ).innerHTML += `<div class="product card lg-3 my-3 mx-3" style="width: 18rem">
-        <img class="card-img-top" alt="${user.jackets[i].img_alt}" src="${user.jackets[i].image}"/>
-        <div class="card-body">
-          <h5 class="mt-2"> ${user.jackets[i].name}</h5>
-          <h3 class="mt-2">${user.jackets[i].jacketName}</h3>
-          <h3 class="mt-1">${user.jackets[i].price}</h3>
-          <p class="card-text">${user.jackets[i].fabric}</p>
-          <a class="btn bi bi-heart"> ${user.jackets[i].gender}</a>
-        </div>
-        </div>`;
-      }
-      root.innerHTML += `</div>`;
-      /* logInForm.style.display = "none"; */
-      startForm.style.display = "none";
-      let logOut = document.getElementById("log-out");
-      logOut.style.display = "block";
-
-      logOut.innerHTML = `${user.userName} <a>Logga ut?</a>`;
-      logOut.querySelector("a").addEventListener("click", function () {
-        /* logInForm.style.display = "block"; */
-        logOut.innerHTML = "Inte inloggad";
-        logOut.style.display = "none";
-        startForm.style.display = "block";
-        document.getElementById("mainHeader").innerHTML = "";
-        root.querySelector("main").innerHTML = "";
-      });
+      displayLoggedIn();
+      localStorage.setItem("user", JSON.stringify(user));
     }
   }
 };
@@ -187,4 +195,9 @@ document.querySelector(".log-in-options").addEventListener("click", (e) => {
     logInDiv.classList.remove("log-in");
     logInDiv.classList.add("hide");
   }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const ref = localStorage.getItem("user");
+  if (ref) user = JSON.parse(ref);
 });
