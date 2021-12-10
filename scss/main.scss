@@ -86,6 +86,11 @@ button {
   h3 {
     text-transform: uppercase;
   }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
 
   .log-in-header {
     padding-top: 5rem;

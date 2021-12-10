@@ -66,7 +66,7 @@
             <li class="nav-item">
               <div id="logInStatus">
                 <a class="nav-link bi bi-person-circle"></a>
-                <div id="log-out" style="display: none">Inte inloggad</div>
+                <div id="log-out" style="display: none">Not logged in</div>
               </div>
             </li>
           </ul>
@@ -124,7 +124,69 @@
 
       <!--<div id="log-out" style="display: none"></div>-->
       <div id="root">
-        <div id="mainHeader"></div>
+        <div id="mainHeader">
+          <div id="mainHeaderInfo"></div>
+          <div class="collapse" id="addJacketSection">
+            <div class="card card-body">
+              <h3>Add jacket</h3>
+              <form>
+                <div class="form-group">
+                  <label for="enterName">Name</label>
+                  <input
+                    class="form-control"
+                    id="enterName"
+                    type="text"
+                    placeholder="Name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="enterJacketName">Jacket Name</label>
+                  <input
+                    class="form-control"
+                    id="enterJacketName"
+                    type="text"
+                    placeholder="Jacket name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="enterPrice">Price</label>
+                  <input
+                    class="form-control"
+                    id="enterPrice"
+                    type="text"
+                    placeholder="Price"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="enterFabric">Fabric</label>
+                  <input
+                    class="form-control"
+                    id="enterFabric"
+                    type="text"
+                    placeholder="Fabric"
+                  />
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="exampleFormControlFile1">Image</label>
+                      <input
+                        type="file"
+                        class="form-control-file"
+                        id="exampleFormControlFile1"
+                      />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <button type="submit" class="">Add jacket</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
         <main></main>
       </div>
     </div>

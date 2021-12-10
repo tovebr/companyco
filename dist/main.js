@@ -114,11 +114,11 @@ window.onload = function () {
   const startForm = document.querySelector(".user-start");
 
   function displayLoggedIn() {
-    document.getElementById("mainHeader").innerHTML = `<div class="card">
+    document.getElementById("mainHeaderInfo").innerHTML += `<div class="card">
     <div class="card-body">
-    <h5 class="cart-tile">Hej ${user.firstName} ${user.lastName}!</h5> 
-    <p class="card-text">Du har ${user.jackets.length} jackor till salu.</p>
-    <a href="#" class="card-link">Lägg till ny jacka</a>`;
+    <h5 class="cart-tile">Welcome ${user.firstName} ${user.lastName}!</h5> 
+    <p class="card-text">You have ${user.jackets.length} jackets for sale.</p>
+    <a data-toggle="collapse" href="#addJacketSection" role="button" aria-expanded="false" aria-controls="addJacketSection" class="card-link">Add new jacket</a>`;
     for (let i = 0; i < user.jackets.length; i++) {
       root.querySelector(
         "main"
@@ -138,12 +138,13 @@ window.onload = function () {
     let logOut = document.getElementById("log-out");
     logOut.style.display = "block";
 
-    logOut.innerHTML = `${user.userName} <a>Logga ut?</a>`;
+    logOut.innerHTML = `${user.userName} <a>Log out?</a>`;
     logOut.querySelector("a").addEventListener("click", function () {
-      logOut.innerHTML = "Inte inloggad";
+      logOut.innerHTML = "Not logged in";
       logOut.style.display = "none";
+      document.getElementById("mainHeader").style.display = "none";
       startForm.style.display = "block";
-      document.getElementById("mainHeader").innerHTML = "";
+      document.getElementById("mainHeaderInfo").innerHTML = "";
       root.querySelector("main").innerHTML = "";
       localStorage.clear();
     });
@@ -156,11 +157,11 @@ window.onload = function () {
     let username = document.getElementById("username");
     let password = document.getElementById("password");
     let root = document.getElementById("root");
-
+    document.getElementById("mainHeader").style.display = "block";
     user = users.find(({ userName }) => userName === username.value);
     if (user == undefined) {
       root.getElementById("mainHeader").innerHTML =
-        "Fel användarnamn eller lösenord";
+        "Wrong password or username";
     } else if (password.value == user.password) {
       displayLoggedIn();
       localStorage.setItem("user", JSON.stringify(user));
