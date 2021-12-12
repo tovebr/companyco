@@ -55,6 +55,7 @@ body {
     justify-content: center;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     .product {
       img {
         background-size: cover;

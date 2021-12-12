@@ -10,10 +10,12 @@ window.onload = function () {
     localStorage.clear();
   });
 };
-
+const jackets = [];
 users.forEach((user) => {
-  user.jackets.forEach((element) => {
-    console.log(element);
+  console.log(user.firstName);
+  user.jackets.forEach((element, i, arr) => {
+    // console.log(element);
+    jackets.push(arr[i]);
     const html = `
          <div class="card lg-3 my-3 mx-3" style="width: 18rem">
              <img
@@ -27,11 +29,33 @@ users.forEach((user) => {
                <h5 class="mt-1">${element.price}</h5>
                <p class="card-text">${element.fabric}</p>
                <a class="btn bi bi-heart">${element.gender}</a>
-               <a href="#" class="btn btn-primary">Buy</a>
+               <button href="#" class="user btn btn-primary buyBtn">Buy</button>
              </div>
            </div>`;
+    let main = document.querySelector("main");
+    main.innerHTML += html;
+    buyButton();
   });
 });
+
+function buyButton() {
+  let main = document.querySelector("main");
+  let buyBtn = main.getElementsByClassName("buyBtn");
+  Array.from(buyBtn).forEach((btn, i, arr) => {
+    btn.addEventListener("click", function () {
+      btn.disabled = true;
+      const findUser = users.find((u) => u.id == jackets[i].id);
+      document.getElementById("mainHeaderInfo").innerHTML += `<div class="card">
+      <div class="card-body">
+      <p class="card-text"><i class="bi bi-envelope text-danger"></i> ${findUser.firstName} ${findUser.lastName} has been notified for your interest in ${jackets[i].jacketName}</p>`;
+      let mailContent = `${user.firstName} ${user.lastName} is interested to buy ${jackets[i].jacketName}`;
+      findUser.mail.push(mailContent);
+      console.log(findUser);
+    });
+  });
+}
+
+function sendMail() {}
 
 document.addEventListener("DOMContentLoaded", () => {
   const ref = localStorage.getItem("user");
