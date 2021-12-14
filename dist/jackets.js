@@ -1,42 +1,51 @@
+let user;
 window.onload = function () {
   let logOut = document.getElementById("log-out");
   logOut.style.display = "block";
 
-  logOut.innerHTML = `${user.userName} <a>Logga ut?</a>`;
-  logOut.querySelector("a").addEventListener("click", function () {
-    logOut.innerHTML = "Inte inloggad";
-    logOut.style.display = "none";
+  if (user) {
+    logOut.innerHTML = `${user.userName} <a>Logga ut?</a>`;
+    logOut.querySelector("a").addEventListener("click", function () {
+      logOut.innerHTML = "Inte inloggad";
+      logOut.style.display = "none";
 
-    localStorage.clear();
-  });
+      localStorage.clear();
+    });
+  }
 };
+
+function printJackets(jackets) {
+  let html = "";
+  jackets.forEach((jacket) => {
+    html += `
+           <div class="card lg-3 my-3 mx-3" style="width: 18rem">
+               <img
+                 class="card-img-top"
+                 src="${jacket.image}"
+                 alt="#"
+               />
+               <div class="card-body">
+                 <h5 class="mt-2">${jacket.name}</h5>
+                 <h3 class="mt-2">${jacket.jacketName}</h3>
+                 <h5 class="mt-1">${jacket.price}</h5>
+                 <p class="card-text">${jacket.fabric}</p>
+                 <a class="btn bi bi-heart">${jacket.gender}</a>
+                 <button href="#" class="user btn btn-primary buyBtn">Buy</button>
+               </div>
+             </div>`;
+  });
+  let main = document.querySelector("main");
+  main.innerHTML = html;
+  buyButton();
+}
+
 const jackets = [];
 users.forEach((user) => {
-  console.log(user.firstName);
   user.jackets.forEach((element, i, arr) => {
-    // console.log(element);
     jackets.push(arr[i]);
-    const html = `
-         <div class="card lg-3 my-3 mx-3" style="width: 18rem">
-             <img
-               class="card-img-top"
-               src="${element.image}"
-               alt="#"
-             />
-             <div class="card-body">
-               <h5 class="mt-2">${element.name}</h5>
-               <h3 class="mt-2">${element.jacketName}</h3>
-               <h5 class="mt-1">${element.price}</h5>
-               <p class="card-text">${element.fabric}</p>
-               <a class="btn bi bi-heart">${element.gender}</a>
-               <button href="#" class="user btn btn-primary buyBtn">Buy</button>
-             </div>
-           </div>`;
-    let main = document.querySelector("main");
-    main.innerHTML += html;
-    buyButton();
   });
 });
+printJackets(jackets);
 
 function buyButton() {
   let main = document.querySelector("main");
@@ -56,6 +65,24 @@ function buyButton() {
 }
 
 function sendMail() {}
+
+const searchInput = document.querySelector("#searchBar");
+
+searchInput.addEventListener("keyup", () => {
+  const searchResult = jackets.filter(
+    (jacket) =>
+      jacket.name.toLowerCase().includes(searchInput.value.toLowerCase()) ||
+      jacket.jacketName
+        .toLowerCase()
+        .includes(searchInput.value.toLowerCase()) ||
+      jacket.fabric.toLowerCase().includes(searchInput.value.toLowerCase())
+  );
+  printJackets(searchResult);
+});
+
+searchInput.addEventListener("search", () => {
+  printJackets(jackets);
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   const ref = localStorage.getItem("user");
